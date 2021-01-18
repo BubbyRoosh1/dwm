@@ -62,12 +62,17 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *scrotcmd[]  = { "scrot", NULL };
+// Yes I know the normal command is like the same thing idc
+static const char *brightup[]  = { "brightness", "up", NULL };
+static const char *brightdn[]  = { "brightness", "down", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = scrotcmd } },
+	{ MODKEY,                       XK_equal,      spawn,          {.v = brightup } },
+	{ MODKEY,                       XK_minus,      spawn,          {.v = brightdn } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
